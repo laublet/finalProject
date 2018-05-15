@@ -1,0 +1,26 @@
+.productslist {
+	margin: 0 auto;
+	&__row {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		padding: 3rem;
+	}
+
+	&__products {
+		// height: 5vh;
+		// width: 3vw;
+		// width: 4rem;
+		padding: 2rem;
+		margin: 1rem;
+		box-shadow: 0 1.5rem 4rem rgba($color-black, 0.5);
+		background-color: $color-tertiary-light;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		transition: transform 0.3s;
+		&:hover {
+			transform: translateY(-1.5rem) scale(1.03);
+		}
+	}
+}

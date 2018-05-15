@@ -1,0 +1,12 @@
+.messagesdetails {
+	width: 80vw;
+	font-size: 3rem;
+	margin: 8vh auto;
+	background-color: $color-primary-dark;
+	box-shadow: 0 1.5rem 4rem rgba($color-black, 0.5);
+	padding: 2rem;
+
+	p span {
+		text-decoration: underline;
+	}
+}

@@ -1,0 +1,15 @@
+.profileEdit {
+	margin: 0 auto;
+	&__row {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		padding: 3rem;
+	}
+	&__firstform,
+	&__adressform {
+		width: 80vw;
+		padding: 2rem;
+		margin: 1rem;
+	}
+}

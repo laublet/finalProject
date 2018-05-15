@@ -1,0 +1,32 @@
+.ournav {
+	background-color: $color-secondary-light;
+	color: $color-black;
+	border-color: transparent;
+	font-size: 2rem;
+	font-weight: 700;
+}
+
+.navbar {
+  border-radius: 0%;
+}
+
+#vueChat {
+  text-decoration: none;
+}
+
+.navbar-default .navbar-nav>li>a {
+  display: inline-block;
+  background-image: linear-gradient( to right, blue, purple);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.navbar-default .navbar-nav>li>a:visited,
+.navbar-default .navbar-nav>li>a:hover {
+	text-decoration: underline;
+	color: #F8BBD0;
+}
+
+// #vueChat {
+	
+// }
