@@ -1,8 +1,11 @@
 <template>
-    <div class="userdetails" @click='sendMessages($route.params.id)' style="cursor: pointer">
-    <p><span>Username</span>: {{ user.username }}</p>
-    <p><span>FirstName</span>: {{ user.firstName }}</p>
-    <p><span>LastName</span>: {{ user.lastName }}</p>
+  <div class="userdetails" @click='sendMessages($route.params.id)' style="cursor: pointer">
+    <p>
+      <span>Username</span>: {{ user.username }}</p>
+    <p>
+      <span>FirstName</span>: {{ user.firstName }}</p>
+    <p>
+      <span>LastName</span>: {{ user.lastName }}</p>
   </div>
 </template>
 
@@ -25,17 +28,18 @@ export default {
   methods: {
     getTheUser(id) {
       this.$http
-        .get(`/users/${  id}`)
+        .get(`/users/${id}`)
         .then((res) => {
           this.user = res.data.content;
         })
         .catch((error) => {
-          if (error)
-            {swal({
+          if (error) {
+            swal({
               type: 'error',
               title: 'Oh no ...',
               text: error.response.data.message,
-            });}
+            });
+          }
         });
     },
     sendMessages(idToSendTo) {
@@ -56,5 +60,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

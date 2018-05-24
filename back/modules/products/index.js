@@ -23,6 +23,7 @@ const upload = multer({
 products.post('/', upload.single('picture'), (req, res) => {
   const newProduct = new Product(JSON.parse(req.body.product));
   // const newProduct = new Product(req.body);
+  console.log(newProduct);
   if (req.file) newProduct.pictures = req.file.filename;
   newProduct.userId = req.decode.id;
   newProduct.email = req.decode.email;

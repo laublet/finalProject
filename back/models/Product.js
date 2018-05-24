@@ -23,11 +23,19 @@ const ProductSchema = new mongoose.Schema({
     // required: true
   },
   address: {
-    country: {
+    completeAddress: {
+      type: String,
+      default: null
+    },
+    city: {
       type: String,
       default: null,
     },
-    city: {
+    postal: {
+      type: String,
+      default: null,
+    },
+    street: {
       type: String,
       default: null,
     },

@@ -67,9 +67,7 @@ export default {
               position.coords.longitude,
             ]).addTo(mymap);
             this.$store.state.location = position.coords;
-
             const locations = this.productsLocation;
-            // console.log(locations);
             for (let i = 0; i < locations.length; i++) {
               if (locations[i][1] == null || locations[i][2] == null) {
               } else {
@@ -86,20 +84,32 @@ export default {
                       .bindPopup(`${locations[i][0]} <br> ${address.Match_addr}`)
                       .openPopup();
                   });
-
-                const geocoding = L.esri.Geocoding.reverseGeocode()
-                  .latlng([position.coords.latitude, position.coords.longitude])
-                  .run((error, result, response) => {
-                    const address = result.address;
-                    this.$store.state.location = address;
-                    this.$store.state.location.latitude = position.coords.latitude;
-                    this.$store.state.location.longitude = position.coords.longitude;
-                    markerCurrentLocation
-                      .bindPopup(`You are here </br> ${this.$store.state.location.Match_addr}`)
-                      .openPopup();
-                  });
+                // const geocoding = L.esri.Geocoding.reverseGeocode()
+                //   .latlng([position.coords.latitude, position.coords.longitude])
+                //   .run((error, result, response) => {
+                //     console.log('test');
+                //     const address = result.address;
+                //     this.$store.state.location = address;
+                //     this.$store.state.location.latitude = position.coords.latitude;
+                //     this.$store.state.location.longitude = position.coords.longitude;
+                //     console.log('ICI', address);
+                //     markerCurrentLocation
+                //       .bindPopup(`You are here </br> ${this.$store.state.location.Match_addr}`)
+                //       .openPopup();
+                //   });
               }
             }
+            const geocoding = L.esri.Geocoding.reverseGeocode()
+              .latlng([position.coords.latitude, position.coords.longitude])
+              .run((error, result, response) => {
+                const address = result.address;
+                this.$store.state.location = address;
+                this.$store.state.location.latitude = position.coords.latitude;
+                this.$store.state.location.longitude = position.coords.longitude;
+                markerCurrentLocation
+                  .bindPopup(`You are here </br> ${this.$store.state.location.Match_addr}`)
+                  .openPopup();
+              });
           });
         } else {
           alert("La géolocalisation n'est pas supportée par ce navigateur.");
