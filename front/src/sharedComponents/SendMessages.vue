@@ -6,9 +6,8 @@
           <h2 class="heading-secondary">{{ title }}</h2>
           <hr>
           <div class="form-group">
-            <label for="userID"></label>
-            <input v-model="messagesToSend.userID" id="userID" class="form-control" name="userID" type="text" placeholder="To" required>
-    <!--       <input v-model="user.password" id="password" name="password" type="password" placeholder="password" pattern=".{5,10}" title="5 to 10 characters" required><br><br> -->
+            <label for="username"></label>
+            <input v-model="messagesToSend.username" id="username" class="form-control" name="username" type="text" placeholder="To" required>
           </div>
           <div class="form-group" >
             <label for="title"></label>
@@ -44,6 +43,7 @@ export default {
         title: '',
         content: '',
         userID: '',
+        username: '',
       },
     };
   },
@@ -70,6 +70,7 @@ export default {
   },
   beforeMount() {
     this.messagesToSend.userID = this.$route.params.userID;
+    this.messagesToSend.username = this.$route.params.username;
   },
 };
 </script>

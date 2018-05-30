@@ -16,16 +16,20 @@ const ProductSchema = new mongoose.Schema({
   pictures: {},
   userId: {
     type: String,
-    // required: true,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
   },
   username: {
     type: String,
-    // required: true
+    required: true,
   },
   address: {
     completeAddress: {
       type: String,
-      default: null
+      default: null,
     },
     city: {
       type: String,

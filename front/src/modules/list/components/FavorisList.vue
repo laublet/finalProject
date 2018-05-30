@@ -1,9 +1,9 @@
 <template>
   <div class="productslist" >
     <h2 class="heading-tertiary">{{ title }}</h2>
-    <div class="row productslist__row">
+    <!-- <div class="row productslist__row">
       <product style="cursor: pointer" v-for="product in products.slice(0, 10)" :key="product._id" :namingProps="product"></product>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -12,10 +12,10 @@ import Product from '@/sharedComponents/Product';
 import swal from 'sweetalert2';
 
 export default {
-  name: 'productsList',
+  name: 'favoriteList',
   data() {
     return {
-      title: 'Here is your AwesomeProductsList',
+      title: 'Here is your favorite',
       products: [],
     };
   },

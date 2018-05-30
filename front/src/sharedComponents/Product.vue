@@ -12,7 +12,7 @@
             <!-- <hr> -->
             <div class="product__contact" v-if="this.$route.params.id">
               <h2 >Interested by this product ? </h2>
-              <button @click="contact(namingProps.username)" class="btn btn-lg btn--white">Contact Me !</button>
+              <button @click="contact( namingProps.email, namingProps.username)" class="btn btn-lg btn--white">Contact Me !</button>
             </div>
           </div>
         </div>
@@ -33,11 +33,12 @@ export default {
     };
   },
   methods: {
-    contact(idTosendTo) {
+    contact(idTosendTo, usernameTosendTo) {
       console.log('idTosendTo', idTosendTo);
+      console.log('usernameTosendTo', usernameTosendTo);
       this.$router.push({
         name: 'sendMessages',
-        params: { userID: idTosendTo },
+        params: { userID: idTosendTo, username: usernameTosendTo },
       });
     },
     productdetail() {

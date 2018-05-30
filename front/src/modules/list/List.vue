@@ -5,7 +5,7 @@
 </template>
 
 <script>
-// import ProductsList from './components/ProductsList';
+import ProductsList from './components/ProductsList';
 
 export default {
   name: 'list',

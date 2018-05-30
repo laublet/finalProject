@@ -6,9 +6,10 @@ import Auth from '@/modules/auth/Auth';
 import Login from '@/modules/auth/components/Login';
 import Signup from '@/modules/auth/components/Signup';
 import NewProduct from '@/modules/newProduct/NewProduct';
+import List from '@/modules/list/List';
+import ProductsList from '@/modules/list/components/ProductsList';
+import FavorisList from '@/modules/list/components/FavorisList';
 // import Home from "@/modules/home/Home";
-// import Productslist from "@/modules/home/components/ProductsList";
-// import Welcome from "@/modules/home/components/Welcome";
 // import Messages from "@/modules/messages/Messages";
 // import MessagesList from "@/modules/messages/components/MessagesList";
 // import MessagesDetail from "@/modules/messages/components/MessagesDetail";
@@ -90,24 +91,6 @@ const Home = (resolve) => {
     'Home',
   );
 };
-const Welcome = (resolve) => {
-  require.ensure(
-    ['../modules/home/components/Welcome'],
-    () => {
-      resolve(require('../modules/home/components/Welcome'));
-    },
-    'Home',
-  );
-};
-const ProductsList = (resolve) => {
-  require.ensure(
-    ['../modules/home/components/ProductsList'],
-    () => {
-      resolve(require('../modules/home/components/ProductsList'));
-    },
-    'Home',
-  );
-};
 const Profile = (resolve) => {
   require.ensure(
     ['../modules/profile/Profile'],
@@ -175,18 +158,6 @@ export default new Router({
         default: Home,
         header: Header,
       },
-      children: [
-        {
-          path: '',
-          name: 'welcome',
-          component: Welcome,
-        },
-        {
-          path: 'productsList',
-          name: 'productsList',
-          component: ProductsList,
-        },
-      ],
     },
     {
       path: '/newProduct',
@@ -195,6 +166,26 @@ export default new Router({
         default: NewProduct,
         header: Header,
       },
+    },
+    {
+      path: '/list',
+      name: 'list',
+      components: {
+        default: List,
+        header: Header,
+      },
+      children: [
+        {
+          path: '',
+          name: 'productsList',
+          component: ProductsList,
+        },
+        {
+          path: 'favorite',
+          name: 'favorisList',
+          component: FavorisList,
+        },
+      ],
     },
     {
       path: '/sendMessages',

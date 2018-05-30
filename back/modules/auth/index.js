@@ -86,7 +86,7 @@ auth.post('/login', async (req, res) => {
       if (!user.comparePasswords(req.body.password)) {
         return res.status(401).json({ success: false, message: 'Wrong password..' });
       }
-      jwt.sign({ email: user.email, id: user._id }, process.env.SECRETKEY, (err, result) => {
+      jwt.sign({ email: user.email, id: user._id, username: user.username }, process.env.SECRETKEY, (err, result) => {
         if (err) {
           return res.status(500).json({ success: false, message: err.message });
         }

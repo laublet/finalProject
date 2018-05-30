@@ -1,34 +1,40 @@
-import mongoose from "mongoose";
-import mongooseTypeEmail from "mongoose-type-email";
-import bcrypt from "bcrypt";
+import mongoose from 'mongoose';
+import mongooseTypeEmail from 'mongoose-type-email';
+import bcrypt from 'bcrypt';
 
-let MessageSchema = new mongoose.Schema({
+const MessageSchema = new mongoose.Schema({
   title: {
     type: String,
-    required: true
+    required: true,
   },
   content: {
     type: String,
-    required: true
+    required: true,
   },
   creationDate: {
     type: Date,
-    default: Date.now
+    default: Date.now,
   },
   read: {
     type: Boolean,
-    default: false
+    default: false,
   },
   readDate: {
     type: Date,
-    default: null
+    default: null,
   },
   senderId: {
-    type: String
+    type: String,
+    required: true,
   },
   receiverId: {
-    type: String
-  }
+    type: String,
+    required: true,
+  },
+  from: {
+    type: String,
+    required: true,
+  },
 });
 
-export default mongoose.model("Message", MessageSchema);
+export default mongoose.model('Message', MessageSchema);

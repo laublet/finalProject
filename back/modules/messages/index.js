@@ -7,14 +7,15 @@ import Message from './../../models/Message';
 const messages = express.Router();
 
 messages.post('/', (req, res) => {
-  User.findOne({ username: req.body.userID }, (err, user) => {
+  User.findOne({ email: req.body.userID }, (err, user) => {
     if (err) res.status(500).json({ success: false, message: err.message });
     if (user === null) {
       res.status(401).json({ success: false, message: 'User does not exist' });
     } else {
       const newMessage = new Message(req.body);
-      newMessage.senderId = req.decode.username;
+      newMessage.senderId = req.decode.email;
       newMessage.receiverId = req.body.userID;
+      newMessage.from = req.body.username;
       newMessage.save((err, naming) => {
         if (err) {
           res.status(400).json({ success: false, message: err.message });
@@ -27,7 +28,7 @@ messages.post('/', (req, res) => {
 });
 
 messages.get('/', (req, res) => {
-  Message.find({ receiverId: req.decode.username }, (err, usersMessages) => {
+  Message.find({ receiverId: req.decode.email }, (err, usersMessages) => {
     if (err) {
       res.status(500).json({ success: false, message: err.message });
     } else {

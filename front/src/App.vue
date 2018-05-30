@@ -12,6 +12,7 @@ import Auth from '@/modules/auth/Auth';
 import Home from '@/modules/home/Home';
 import NewProduct from '@/modules/newProduct/NewProduct';
 import Messages from '@/modules/messages/Messages';
+import List from '@/modules/list/List';
 import User from '@/modules/user/User';
 import Header from '@/sharedComponents/Header';
 import Product from '@/sharedComponents/Product';
@@ -22,6 +23,7 @@ export default {
     Auth,
     Home,
     NewProduct,
+    List,
     Messages,
     User,
     Header,

@@ -31,12 +31,13 @@ export default {
           this.messages = res.data.content;
         })
         .catch((error) => {
-          if (error)
-            {swal({
+          if (error) {
+            swal({
               type: 'error',
               title: 'Oh no ...',
               text: error.response.data.message,
-            });}
+            });
+          }
         });
     },
   },

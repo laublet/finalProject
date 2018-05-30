@@ -1,16 +1,7 @@
 <template>
   <div>
-    <div class="productslist" >
-      <h2 class="heading-tertiary">{{ titleTwo }}</h2>
-      <div class="row productslist__row">
-        <product style="cursor: pointer" v-for="product in products.slice(0, 10)" :key="product._id" :namingProps="product"></product>
-      </div>
-    </div>
     <div class="welcome" >
       <div class="row welcome__row">
-        <!-- <router-link :to="{name: 'productsList'}">
-          <button class="btn btn-lg btn--menu">Get the list of products !</button>
-        </router-link><br> -->
         <h2 class="heading-secondary">{{ titleOne }}</h2>
       </div>
       <div id="mapid"></div>
@@ -21,7 +12,6 @@
 <script>
 import Product from '@/sharedComponents/Product';
 import swal from 'sweetalert2';
-import Welcome from './components/Welcome';
 
 export default {
   name: 'home',

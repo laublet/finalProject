@@ -27,6 +27,7 @@ products.post('/', upload.single('picture'), (req, res) => {
   if (req.file) newProduct.pictures = req.file.filename;
   newProduct.userId = req.decode.id;
   newProduct.email = req.decode.email;
+  newProduct.username = req.decode.username;
   newProduct.save((err, product) => {
     if (err) {
       res.status(400).json({ success: false, message: err.message });
