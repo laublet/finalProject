@@ -10,6 +10,10 @@
             <label for="password">Password <span>*</span> </label>
             <input v-model="user.password" id="password" class="form-control" name="password" type="password" placeholder="Enter a valid password" required>
           </div>
+          <div class="form-group" >
+            <label for="comfirmPassword">Comfirm Password <span>*</span> </label>
+            <input v-model="comfirmPassword" id="comfirmPassword" class="form-control" name="comfirmPassword" type="password" placeholder="Enter a valid password" required>
+          </div>
           <div class="form-group">
             <label for="firstName">FirstName   </label>
             <input v-model="user.firstName" id="firstName" class="form-control" name="firstName" type="text" placeholder="...">
@@ -20,36 +24,6 @@
           </div>
         </div>
         <hr>
-        <div class="profileEdit__adressform">
-          <div class="form-group" >
-            <label for="country">Country </label>
-            <input v-model="user.address.country" id="country" class="form-control" name="country" type="text" placeholder="..." required>
-          </div>
-          <div class="form-group" >
-            <label for="region">Region </label>
-            <input v-model="user.address.region" id="region" class="form-control" name="region" type="text" placeholder="..." required>
-          </div>
-          <div class="form-group" >
-            <label for="city">City </label>
-            <input v-model="user.address.city" id="city" class="form-control" name="city" type="text" placeholder="..." required>
-          </div>
-          <div class="form-group" >
-            <label for="street">Street </label>
-            <input v-model="user.address.street" id="street" class="form-control" name="street" type="text" placeholder="..." required>
-          </div>
-          <div class="form-group" >
-            <label for="postal">Postal Code </label>
-            <input v-model="user.address.postal" id="postal" class="form-control" name="postal" type="text" placeholder="..." required>
-          </div>
-          <div class="form-group" >
-            <label for="latitude">Latitude </label>
-            <input v-model="user.address.latitude" id="latitude" class="form-control" name="latitude" type="text" placeholder="..." required>
-          </div>
-          <div class="form-group" >
-            <label for="longitude">Longitude </label>
-            <input v-model="user.address.longitude" id="longitude" class="form-control" name="longitude" type="text" placeholder="..." required>
-          </div>
-        </div>
       </form>
     </div>
     <button class="btn btn-lg btn--white" @click="updateUser">Update your profile</button>
@@ -78,6 +52,7 @@ export default {
           latitude: '',
         },
       },
+      comfirmPassword: '',
     };
   },
   methods: {

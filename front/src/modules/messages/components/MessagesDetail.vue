@@ -3,7 +3,7 @@
     <div class="messagesdetails">
       <h2 class="heading-secondary">{{ $route.params.message.title }}</h2>
       <p>From: {{ $route.params.message.from }}</p>
-      <div class="content">{{ $route.params.message.content }}</div>
+      <div class="messagesdetails__content">{{ $route.params.message.content }}</div>
     </div>
   </div>
 </template>

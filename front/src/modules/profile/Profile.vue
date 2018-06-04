@@ -1,9 +1,6 @@
 <template>
   <div>
     <div>
-      <router-link :to="{name: 'newProduct'}">
-        <button class="btn btn-lg btn--menu">Register a new product </button>
-      </router-link>
       <router-link :to="{name: 'productsListUser'}">
         <button class="btn btn-lg btn--menu">Your products</button>
       </router-link>
@@ -16,9 +13,6 @@
 </template>
 
 <script>
-import NewProduct from './components/NewProduct';
-import ProductsListUser from './components/ProductsListUser';
-import ProfileEdit from './components/ProfileEdit';
 
 export default {
   name: 'profile',

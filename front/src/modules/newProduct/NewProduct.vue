@@ -66,7 +66,7 @@ export default {
   name: 'newProduct',
   components: {
     PictureInput,
-     //   ProductForm,
+    //   ProductForm,
   //   LocalisationForm,
   //   ProfileForm,
   },
@@ -127,12 +127,12 @@ export default {
     },
     mapinit() {
       const currentLocation = () => {
-         if (navigator.geolocation) {
+        if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition((position) => {
             const markerCurrentLocation = L.marker([
               position.coords.latitude,
               position.coords.longitude,
-            ]).addTo(mymap)
+            ]).addTo(mymap);
             const geocoding = L.esri.Geocoding.reverseGeocode()
               .latlng([position.coords.latitude, position.coords.longitude])
               .run((error, result, response) => {
@@ -143,16 +143,16 @@ export default {
                 this.product.address.street = address.Address;
                 this.product.address.latitude = position.coords.latitude;
                 this.product.address.longitude = position.coords.longitude;
-                console.log('ICI',this.product.address);
+                console.log('ICI', this.product.address);
                 markerCurrentLocation
                   .bindPopup(`You are here </br> ${address.Match_addr}`)
                   .openPopup();
               });
           });
-            } else {
+        } else {
           alert("La géolocalisation n'est pas supportée par ce navigateur.");
         }
-      }
+      };
       currentLocation();
       let mymap = L.map('mapid', {
         center: ['45.99956', '-1.21353'],
@@ -170,13 +170,13 @@ export default {
         },
       ).addTo(mymap);
     },
-  }
-}
+  },
+};
 </script>
 
 <style scoped>
-#mapid { 
-  height: 100px; 
+#mapid {
+  height: 100px;
   width: 300px;
   border: 1px solid black;
   }

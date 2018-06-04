@@ -40,7 +40,7 @@ export default {
         });
     },
   },
-  created() {
+  beforeMount() {
     console.log('test');
     this.getProducts();
   },
