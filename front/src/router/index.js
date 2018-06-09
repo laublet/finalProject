@@ -8,7 +8,6 @@ import Signup from '@/modules/auth/components/Signup';
 import NewProduct from '@/modules/newProduct/NewProduct';
 import List from '@/modules/list/List';
 import ProductsList from '@/modules/list/components/ProductsList';
-import FavorisList from '@/modules/list/components/FavorisList';
 // import Home from "@/modules/home/Home";
 // import Messages from "@/modules/messages/Messages";
 // import MessagesList from "@/modules/messages/components/MessagesList";
@@ -152,11 +151,6 @@ export default new Router({
           path: '',
           name: 'productsList',
           component: ProductsList,
-        },
-        {
-          path: 'favorite',
-          name: 'favorisList',
-          component: FavorisList,
         },
       ],
     },

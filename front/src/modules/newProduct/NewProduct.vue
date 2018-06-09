@@ -1,9 +1,4 @@
 <template>
-  <!-- <div>
-    <productForm></productForm>
-    <localisationForm></localisationForm>
-    <profileForm></profileForm>
-  </div> -->
   <div>
     <div class="col-xs-6">
       <div class="NewProduct">
@@ -55,9 +50,6 @@
 </template>
 
 <script>
-// import ProductForm from './components/ProductForm';
-// import LocalisationForm from './components/LocalisationForm';
-// import ProfileForm from './components/ProfileForm';
 import swal from 'sweetalert2';
 import PictureInput from 'vue-picture-input';
 import FormDataPost from '../../upload';
@@ -66,9 +58,6 @@ export default {
   name: 'newProduct',
   components: {
     PictureInput,
-    //   ProductForm,
-  //   LocalisationForm,
-  //   ProfileForm,
   },
   data() {
     return {

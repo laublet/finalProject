@@ -7,8 +7,6 @@
 </template>
 
 <script>
-import MessagesList from './components/MessagesList';
-import MessagesDetail from './components/MessagesDetail';
 
 export default {
   name: 'messages',
@@ -17,11 +15,6 @@ export default {
       Status: true,
     };
   },
-  components: {
-    MessagesList,
-    MessagesDetail,
-  },
-  methods: {},
 };
 </script>
 
