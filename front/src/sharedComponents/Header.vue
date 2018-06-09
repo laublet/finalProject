@@ -19,7 +19,6 @@
           <router-link tag="li" :to="{name: 'home'}"><a>Accueil</a></router-link>
           <router-link tag="li" :to="{name: 'newProduct'}"><a>Enregistrer un produit</a></router-link>
           <router-link tag="li" :to="{name: 'productsList'}"><a>Liste des Produits</a></router-link>
-          <router-link tag="li" :to="{name: 'favorisList'}"><a>Favoris</a></router-link>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <router-link tag="li" :to="{name: 'messagesList'}"><a>Your Inbox</a></router-link>

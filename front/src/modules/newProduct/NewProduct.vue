@@ -90,40 +90,48 @@ export default {
       this.picture = '';
     },
     sendData() {
-      const data = new FormData();
-      data.append('product', JSON.stringify(this.product));
-      data.append('picture', this.picture);
-      const config = {
-        headers: {
-          'content-type': 'multipart/form-data',
-        },
-      };
-      this.$http
-        .post('/products', data, config)
-        .then((res) => {
-          if (res) {
-            swal({
-              type: 'success',
-              title: 'Congrat !',
-              text: res.data.message,
-            });
-            this.picture = '';
-            this.product = {};
-          } else {
-            alert('Server Error');
-          }
-        })
-        .catch((error) => {
-          if (error) {
-            swal({
-              type: 'error',
-              title: 'Oh no ...',
-              text: error.response.data.message,
-            });
-            this.product = {};
-            this.onRemoved();
-          }
+      if (this.product.title && this.product.description && this.product.price) {
+        const data = new FormData();
+        data.append('product', JSON.stringify(this.product));
+        data.append('picture', this.picture);
+        const config = {
+          headers: {
+            'content-type': 'multipart/form-data',
+          },
+        };
+        this.$http
+          .post('/products', data, config)
+          .then((res) => {
+            if (res) {
+              swal({
+                type: 'success',
+                title: 'Congrat !',
+                text: res.data.message,
+              });
+              this.picture = '';
+              this.product = {};
+            } else {
+              alert('Server Error');
+            }
+          })
+          .catch((error) => {
+            if (error) {
+              swal({
+                type: 'error',
+                title: 'Oh no ...',
+                text: error.response.data.message,
+              });
+              this.product = {};
+              this.onRemoved();
+            }
+          });
+      } else {
+        swal({
+          type: 'error',
+          title: 'Oh no ...',
+          text: 'You must fill all the field',
         });
+      }
     },
     mapinit() {
       const currentLocation = () => {
@@ -143,7 +151,6 @@ export default {
                 this.product.address.street = address.Address;
                 this.product.address.latitude = position.coords.latitude;
                 this.product.address.longitude = position.coords.longitude;
-                console.log('ICI', this.product.address);
                 markerCurrentLocation
                   .bindPopup(`You are here </br> ${address.Match_addr}`)
                   .openPopup();
@@ -170,6 +177,9 @@ export default {
         },
       ).addTo(mymap);
     },
+  },
+  mounted() {
+    this.mapinit();
   },
 };
 </script>

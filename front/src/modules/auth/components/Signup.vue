@@ -24,8 +24,14 @@
             </label>
             <input v-model="user.password" id="password" class="form-control" name="password" type="password" placeholder="Enter a valid password" required>
           </div>
+          <div class="form-group">
+            <label for="comfirmPassword">Password Comfirmation
+              <span>*</span>
+            </label>
+            <input v-model="comfirmPassword" id="comfirmPassword" class="form-control" name="comfirmPassword" type="password" placeholder="Enter a valid password" required>
+          </div>
           <router-link tag="button" class="btn btn-lg btn--white" :to="{name:'login'}">Go to Login</router-link>
-          <button class="btn btn-lg btn--white" @click="signIn">Sign In</button>
+          <button class="btn btn-lg btn--white" @click="check">Sign In</button>
         </div>
       </div>
     </form>
@@ -45,9 +51,21 @@ export default {
         username: '',
         password: '',
       },
+      comfirmPassword: '',
     };
   },
   methods: {
+    check() {
+      if (this.user.password === this.comfirmPassword) {
+        this.signIn();
+      } else {
+        swal({
+          type: 'error',
+          title: 'Oups',
+          text: 'You must enter the same password twice',
+        });
+      }
+    },
     signIn() {
       this.$http
         .post('/auth/signup', this.user)

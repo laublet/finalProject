@@ -37,6 +37,24 @@ profile.put('/', (req, res) => {
   });
 });
 
+profile.delete('/', (req, res) => {
+  Product.deleteMany({ userId: req.decode.id }, (err) => {
+    if (err) res.status(500).json({ success: false, message: err.message });
+    else {
+      console.log('DONE');
+    }
+  });
+  User.findOneAndRemove({ _id: req.decode.id }, (err) => {
+    if (err) res.status(500).json({ success: false, message: err.message });
+    else {
+      res.status(200).json({
+        success: true,
+        message: 'You\'ve just been erased',
+      });
+    }
+  });
+});
+
 profile.get('/products', (req, res) => {
   Product.find({ userId: req.decode.id }, (err, uniqueProduct) => {
     if (err) res.status(500).json({ success: false, message: err.message });

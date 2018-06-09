@@ -82,6 +82,15 @@ const ProfileEdit = (resolve) => {
     'Profile',
   );
 };
+const ProfileDelete = (resolve) => {
+  require.ensure(
+    ['../modules/profile/components/ProfileDelete'],
+    () => {
+      resolve(require('../modules/profile/components/ProfileDelete'));
+    },
+    'Profile',
+  );
+};
 const ProductsListUser = (resolve) => {
   require.ensure(
     ['../modules/profile/components/ProductsListUser'],
@@ -193,9 +202,9 @@ export default new Router({
           component: ProfileEdit,
         },
         {
-          path: '/newProduct',
-          name: 'newProduct',
-          component: NewProduct,
+          path: '/delete',
+          name: 'profileDelete',
+          component: ProfileDelete,
         },
         {
           path: '/productsListUser',

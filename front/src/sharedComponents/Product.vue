@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <div @click="productdetail">
       <div class="row productdetail__row">
         <div :class="[{product: !this.$route.params.id}, {productdetail__product: this.$route.params.id}]">

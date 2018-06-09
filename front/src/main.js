@@ -10,6 +10,7 @@ import router from './router';
 import './assets/sass/main.scss';
 import { store } from './store/store';
 
+
 Vue.use(VueAxios, axios);
 Vue.config.productionTip = false;
 

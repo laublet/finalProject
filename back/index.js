@@ -11,7 +11,6 @@ import path from 'path';
 import connection from './modules/connection/index';
 import checkToken from './modules/checkToken/index';
 import auth from './modules/auth/index';
-import users from './modules/users/index';
 import messages from './modules/messages/index';
 import profile from './modules/profile/index';
 import products from './modules/products/index';
@@ -31,7 +30,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/auth', auth);
 app.use(checkToken);
 app.use('/products', products);
-app.use('/users', users);
 app.use('/messages', messages);
 app.use('/profile', profile);
 
