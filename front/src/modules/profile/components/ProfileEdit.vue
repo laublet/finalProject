@@ -1,25 +1,27 @@
 <template>
-  <div class="profileEdit" >
-      <h2 class="heading-secondary">Edit your profile</h2>
-      <hr>
+  <div class="profileEdit">
+    <h2 class="heading-secondary">Edit your profile</h2>
+    <hr>
     <div class="row profileEdit__row">
       <form v-on:submit.prevent>
         <div class="profileEdit__firstform">
-           <div class="form-group">
+          <div class="form-group">
             <label for="username">Pseudo
               <span>*</span>
             </label>
             <input v-model="user.username" id="username" class="form-control" name="username" type="text" placeholder="Choose an username" required>
           </div>
-           <div class="form-group">
+          <div class="form-group">
             <label for="email">Email
               <span>*</span>
             </label>
             <input v-model="user.email" id="email" class="form-control" name="email" type="email" placeholder="email@example.com" required>
           </div>
-          <div class="form-group" >
-          <!-- <input v-model="user.password" id="password" name="password" type="password" placeholder="password" pattern=".{5,10}" title="5 to 10 characters" required><br><br> -->
-            <label for="password">New Password <span>*</span> </label>
+          <div class="form-group">
+            <!-- <input v-model="user.password" id="password" name="password" type="password" placeholder="password" pattern=".{5,10}" title="5 to 10 characters" required><br><br> -->
+            <label for="password">New Password
+              <span>*</span>
+            </label>
             <input v-model="user.password" id="password" class="form-control" name="password" type="password" placeholder="Enter a valid password" required>
           </div>
           <div class="form-group">
@@ -55,7 +57,9 @@ export default {
   },
   methods: {
     check() {
-      if (this.user.password === this.comfirmPassword) {
+      if (!this.user.password && !this.comfirmPassword) {
+        this.updateUser();
+      } else if (this.user.password === this.comfirmPassword) {
         this.updateUser();
       } else {
         swal({
@@ -122,5 +126,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

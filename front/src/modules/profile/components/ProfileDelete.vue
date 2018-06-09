@@ -36,8 +36,14 @@ export default {
   },
   methods: {
     check() {
-      if (this.password === this.comfirmPassword) {
-        this.deleteUser();
+      if (!this.password && !this.comfirmPassword) {
+        swal({
+          type: 'error',
+          title: 'Oups',
+          text: 'You must fill ',
+        });
+      } else if (this.password === this.comfirmPassword) {
+        this.deleteUser(this.password);
       } else {
         swal({
           type: 'error',
@@ -46,9 +52,9 @@ export default {
         });
       }
     },
-    deleteUser() {
+    deleteUser(password) {
       this.$http
-        .delete('/profile')
+        .delete('/profile', password)
         .then((res) => {
           if (res) {
             swal({

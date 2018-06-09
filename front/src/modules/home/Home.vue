@@ -56,7 +56,6 @@ export default {
               position.coords.latitude,
               position.coords.longitude,
             ]).addTo(mymap);
-            this.$store.state.location = position.coords;
             const locations = this.productsLocation;
             for (let i = 0; i < locations.length; i++) {
               if (locations[i][1] == null || locations[i][2] == null) {
@@ -68,36 +67,18 @@ export default {
                   .latlng([locations[i][1], locations[i][2]])
                   .run((error, result, response) => {
                     const address = result.address;
-                    // console.log(result.address);
-                    // console.log(address.Match_addr);
                     markerLocation
                       .bindPopup(`${locations[i][0]} <br> ${address.Match_addr}`)
                       .openPopup();
                   });
-                // const geocoding = L.esri.Geocoding.reverseGeocode()
-                //   .latlng([position.coords.latitude, position.coords.longitude])
-                //   .run((error, result, response) => {
-                //     console.log('test');
-                //     const address = result.address;
-                //     this.$store.state.location = address;
-                //     this.$store.state.location.latitude = position.coords.latitude;
-                //     this.$store.state.location.longitude = position.coords.longitude;
-                //     console.log('ICI', address);
-                //     markerCurrentLocation
-                //       .bindPopup(`You are here </br> ${this.$store.state.location.Match_addr}`)
-                //       .openPopup();
-                //   });
               }
             }
             const geocoding = L.esri.Geocoding.reverseGeocode()
               .latlng([position.coords.latitude, position.coords.longitude])
               .run((error, result, response) => {
                 const address = result.address;
-                this.$store.state.location = address;
-                this.$store.state.location.latitude = position.coords.latitude;
-                this.$store.state.location.longitude = position.coords.longitude;
                 markerCurrentLocation
-                  .bindPopup(`You are here </br> ${this.$store.state.location.Match_addr}`)
+                  .bindPopup(`You are here </br> ${address.Match_addr}`)
                   .openPopup();
               });
           });

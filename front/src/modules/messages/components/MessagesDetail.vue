@@ -1,10 +1,10 @@
 <template>
   <div class="col-xs-12">
     <div class="messagesdetails">
-      <h2 class="heading-secondary">{{ $route.params.message.title }}</h2>
-      <p>From: {{ $route.params.message.from }}</p>
-      <div class="messagesdetails__content">{{ $route.params.message.content }}</div>
-      <button @click="contact( $route.params.message.senderId, $route.params.message.from)" class="btn btn-lg btn--white">Response</button>
+      <h2 class="heading-secondary">{{ this.message.title }}</h2>
+      <p>From: {{ this.message.from }}</p>
+      <div class="messagesdetails__content">{{ this.message.content }}</div>
+      <button @click="contact(message.senderId, message.from)" class="btn btn-lg btn--white">Response</button>
     </div>
   </div>
 </template>
@@ -16,13 +16,11 @@ export default {
   name: 'messagesDetail',
   data() {
     return {
-      messages: [],
+      message: [],
     };
   },
   methods: {
     contact(idTosendTo, usernameTosendTo) {
-      console.log('idTosendTo', idTosendTo);
-      console.log('usernameTosendTo', usernameTosendTo);
       this.$router.push({
         name: 'sendMessages',
         params: { userID: idTosendTo, username: usernameTosendTo },
@@ -45,10 +43,30 @@ export default {
           });
       }
     },
+    getMessage(id) {
+      this.$http
+        .get(`/messages/${id}`)
+        .then((res) => {
+          this.message = res.data.content;
+        })
+        .catch((error) => {
+          if (error) {
+            swal({
+              type: 'error',
+              title: 'Oh no ...',
+              text: error.response.data.message,
+            });
+          }
+        });
+    },
   },
   beforeMount() {
-    console.log(this.$route.params.message);
     const id = this.$route.params.ID;
+    if (this.$route.params.message === undefined) {
+      this.getMessage(id);
+    } else {
+      this.message = this.$route.params.message;
+    }
     this.update(id);
   },
 };

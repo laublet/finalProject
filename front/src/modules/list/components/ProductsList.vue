@@ -3,16 +3,16 @@
     <div class="productslist">
       <h2 class="heading-tertiary">{{ title }}</h2>
       <div class="row productslist__row">
-        <product style="cursor: pointer" v-for="product in paginatedData" :key="product._id" :namingProps="product"></product>
+        <input v-model='filter'>
+        <product style="cursor: pointer" v-for="product in paginatedProducts" :key="product._id" :namingProps="product"></product>
+        <div v-if="this.productsFilter < 1">
+          No product
+        </div>
       </div>
     </div>
-    <button :disabled="pageNumber === 0" @click="prevPage">
-      Previous
-    </button>
+    <button :disabled="pageNumber === 0" @click="prevPage">Previous</button>
     {{pageNumber + 1}} / {{pageCount}}
-    <button :disabled="pageNumber >= pageCount -1" @click="nextPage">
-      Next
-    </button>
+    <button :disabled="pageNumber >= pageCount -1" @click="nextPage">Next</button>
   </div>
 </template>
 
@@ -28,6 +28,7 @@ export default {
       products: [],
       pageNumber: 0,
       size: 1,
+      filter: '',
     };
   },
   components: {
@@ -58,15 +59,19 @@ export default {
     },
   },
   computed: {
+    productsFilter() {
+      return this.products.filter(product => product.title.match(this.filter));
+    },
     pageCount() {
-      const length = this.products.length;
+      console.log('ICI', this.productsFilter);
+      const length = this.productsFilter.length;
       const size = this.size;
       return Math.floor(length / size);
     },
-    paginatedData() {
+    paginatedProducts() {
       const start = this.pageNumber * this.size;
       const end = start + this.size;
-      return this.products.slice(start, end);
+      return this.productsFilter.slice(start, end);
     },
   },
   beforeMount() {

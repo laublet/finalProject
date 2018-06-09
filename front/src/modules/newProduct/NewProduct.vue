@@ -39,10 +39,6 @@
       <div>
         <h1>Localisation</h1>
         <div id="mapid"></div>
-        <button class="btn btn-lg btn--white" @click="mapinit">Get Location</button>
-      </div>
-      <div>
-        <h1>Vos informations</h1>
       </div>
     </div>
     <button class="btn btn-lg btn--white" @click="sendData">Validate !</button>

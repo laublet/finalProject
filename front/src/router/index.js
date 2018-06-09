@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Header from '@/sharedComponents/Header';
 import Product from '@/sharedComponents/Product';
+import ProductUser from '@/sharedComponents/ProductUser';
 import Auth from '@/modules/auth/Auth';
 import Login from '@/modules/auth/components/Login';
 import Signup from '@/modules/auth/components/Signup';
@@ -212,6 +213,14 @@ export default new Router({
       name: 'productDetail',
       components: {
         default: Product,
+        header: Header,
+      },
+    },
+    {
+      path: 'productUser/:id',
+      name: 'productUser',
+      components: {
+        default: ProductUser,
         header: Header,
       },
     },

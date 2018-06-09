@@ -41,6 +41,28 @@ messages.get('/', (req, res) => {
   });
 });
 
+messages.get('/:messageId', (req, res) => {
+  if (mongoose.Types.ObjectId.isValid(req.params.messageId)) {
+    Message.findOne({ _id: req.params.messageId }, (err, message) => {
+      if (err) {
+        res.status(500).json({ success: false, message: err.message });
+      } else {
+        console.log('ICI', message);
+        res.status(200).json({
+          success: true,
+          message: 'Here are your message!',
+          content: message,
+        });
+      }
+    });
+  } else {
+    res.status(400).json({
+      success: false,
+      message: 'Message ID not valid !',
+    });
+  }
+});
+
 messages.put('/:messageId', (req, res) => {
   if (mongoose.Types.ObjectId.isValid(req.params.messageId)) {
     Message.findByIdAndUpdate(
