@@ -1,11 +1,13 @@
 <template>
   <div>
+    <div class="col-xs-12">
+      <h2 class="heading-secondary">{{ title }}</h2>
+    </div>
     <div class="col-xs-6">
       <div class="NewProduct">
         <div class="row NewProduct__row">
           <form v-on:submit.prevent>
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-              <h2 class="heading-secondary">{{ title }}</h2>
+            <div class="col-xs-12 col-sm-8 col-sm-offset-4 col-md-6 col-md-offset-5">
               <hr>
               <div class="form-group">
                 <label for="title">Title
@@ -17,10 +19,11 @@
                 <label for="description">Description
                   <span>*</span>
                 </label>
-                <input v-model="product.description" id="description" class="form-control" name="description" type="text" placeholder="Describe your product" required>
+                <textarea v-model="product.description" id="description" class="form-control" name="description" type="textarea" placeholder="Describe your product" rows="5" required></textarea>
+                <!-- <input v-model="product.description" id="description" class="form-control" name="description" type="textarea" placeholder="Describe your product" required> -->
               </div>
               <div class="form-group">
-                <label for="price">Price </label>
+                <label for="price">Price <span>*</span></label>
                 <input v-model="product.price" id="price" class="form-control" name="price" type="number" placeholder="..." required>
               </div>
               <div class="form-group">
@@ -40,8 +43,8 @@
         <h1>Localisation</h1>
         <div id="mapid"></div>
       </div>
+    <button class="btn btn-lg btn--validate" @click="sendData">Validate !</button>
     </div>
-    <button class="btn btn-lg btn--white" @click="sendData">Validate !</button>
   </div>
 </template>
 
@@ -65,6 +68,7 @@ export default {
         address: {},
       },
       picture: '',
+      currency: '€',
     };
   },
   methods: {
@@ -171,8 +175,11 @@ export default {
 
 <style scoped>
 #mapid {
-  height: 100px;
-  width: 300px;
+  height: 20vh;
+  width: 30vw;
   border: 1px solid black;
-  }
+}
+textarea {
+    resize: none;
+}
 </style>

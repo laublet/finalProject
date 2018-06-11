@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="productslist">
-      <h2 class="heading-tertiary">{{ title }}</h2>
+      <h2 class="heading-secondary">{{ title }}</h2>
       <div class="row productslist__row">
         <input v-model='filter'>
         <product style="cursor: pointer" v-for="product in paginatedProducts" :key="product._id" :namingProps="product"></product>
@@ -63,7 +63,6 @@ export default {
       return this.products.filter(product => product.title.match(this.filter));
     },
     pageCount() {
-      console.log('ICI', this.productsFilter);
       const length = this.productsFilter.length;
       const size = this.size;
       return Math.floor(length / size);

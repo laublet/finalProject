@@ -10,7 +10,9 @@
 	&__products {
 		// height: 5vh;
 		// width: 3vw;
-		// width: 4rem;
+    // width: 4rem;
+    word-wrap: break-word;
+    white-space: pre-wrap;
 		padding: 2rem;
 		margin: 1rem;
 		box-shadow: 0 1.5rem 4rem rgba($color-black, 0.5);

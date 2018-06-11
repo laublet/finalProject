@@ -49,6 +49,7 @@ export default {
   },
   methods: {
     sendMessage() {
+      console.log('ici', this.messagesToSend);
       this.$http
         .post('/messages', this.messagesToSend)
         .then((res) => {

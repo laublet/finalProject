@@ -19,7 +19,6 @@ export default {
     return {
       msg: 'Welcome',
       titleOne: 'Welcome',
-      titleTwo: 'Here is your AwesomeProductsList',
       products: [],
       productsLocation: [],
     };

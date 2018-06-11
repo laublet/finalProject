@@ -55,17 +55,6 @@ export default {
     };
   },
   methods: {
-    check() {
-      if (this.user.password === this.comfirmPassword) {
-        this.signIn();
-      } else {
-        swal({
-          type: 'error',
-          title: 'Oups',
-          text: 'You must enter the same password twice',
-        });
-      }
-    },
     signIn() {
       this.$http
         .post('/auth/signup', this.user)
@@ -93,6 +82,17 @@ export default {
             });
           }
         });
+    },
+    check() {
+      if (this.user.password === this.comfirmPassword) {
+        this.signIn();
+      } else {
+        swal({
+          type: 'error',
+          title: 'Oups',
+          text: 'You must enter the same password twice',
+        });
+      }
     },
   },
 };

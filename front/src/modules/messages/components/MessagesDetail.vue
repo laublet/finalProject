@@ -21,6 +21,7 @@ export default {
   },
   methods: {
     contact(idTosendTo, usernameTosendTo) {
+      console.log(idTosendTo, usernameTosendTo);
       this.$router.push({
         name: 'sendMessages',
         params: { userID: idTosendTo, username: usernameTosendTo },

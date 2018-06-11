@@ -4,9 +4,11 @@
 	// margin: 1rem;
 	box-shadow: 0 1.5rem 4rem rgba($color-black, 0.5);
 	background-color: $color-primary-dark;
-	display: flex;
+  display: flex;
+  // word-wrap: break-word;
+  // white-space: pre-wrap;
 
-	white-space: nowrap;
+  // white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	transition: transform 0.3s;
@@ -48,7 +50,9 @@
 		font-size: 3rem;
 		background-color: $color-primary-dark;
 
-		box-shadow: 0 1.5rem 4rem rgba($color-black, 0.5);
+    box-shadow: 0 1.5rem 4rem rgba($color-black, 0.5);
+    word-wrap: break-word;
+    white-space: pre-wrap;
 		// white-space: nowrap;
 		// overflow: hidden;
 		// text-overflow: ellipsis;
