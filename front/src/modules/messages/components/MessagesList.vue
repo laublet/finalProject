@@ -1,16 +1,15 @@
 <template>
   <div class="col-xs-12">
     <div class="messageslist">
-      <h2 class="heading-secondary">{{ title }}</h2>
       <div class="row messageslist__row">
         <router-link tag="div" :class="[{messageslist__messageToRead: !message.read},{messageslist__messageReaded: message.read}]" :to="{name:'messagesDetail' , params: {ID: message._id , message: message}}" style="cursor: pointer" v-for='message in paginatedMessages' :key="message._id">
-          <p>Subject: {{ message.title }}</p>
-          <p>From: {{ message.from }}</p>
+          <h2>Subject: {{ message.title }}</h2><br>
+          <h3>From: {{ message.from }}</h3><br>
           <p>{{ message.content }}</p>
         </router-link>
       </div>
       <button :disabled="pageNumber === 0" @click="prevPage" class="btn btn-lg btn--white">Previous</button>
-      {{pageNumber + 1}} / {{pageCount}}
+      {{pageNumber + 1}} / {{pageCount + 1}}
       <button :disabled="pageNumber >= pageCount" @click="nextPage" class="btn btn-lg btn--white">Next</button>
     </div>
   </div>
@@ -25,7 +24,7 @@ export default {
     return {
       title: 'Here are your AwesomeMessages',
       messages: [],
-      pageNumber: 0,
+      pageNumber: 1,
       size: 5,
     };
   },

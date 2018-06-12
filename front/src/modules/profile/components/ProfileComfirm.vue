@@ -18,7 +18,7 @@
         <hr>
       </form>
     </div>
-    <button class="btn btn-lg btn--white" @click="check">Delete your profile</button>
+    <button class="btn btn-lg btn--white" @click="check">Comfirm</button>
   </div>
 </template>
 
@@ -43,7 +43,11 @@ export default {
           text: 'You must fill ',
         });
       } else if (this.password === this.comfirmPassword) {
-        this.deleteUser(this.password);
+        if (this.$router.currentRoute.name === 'profileUpdate') {
+          this.updateUser(this.$route.params.userUpdate, this.password);
+        } else {
+          this.deleteUser(this.password);
+        }
       } else {
         swal({
           type: 'error',
@@ -52,9 +56,9 @@ export default {
         });
       }
     },
-    deleteUser(password) {
+    deleteUser(passwordComfirm) {
       this.$http
-        .delete('/profile', password)
+        .delete('/profile', { data: { password: passwordComfirm } })
         .then((res) => {
           if (res) {
             swal({
@@ -63,6 +67,38 @@ export default {
               text: res.data.message,
             });
             this.$router.push('/login');
+          } else {
+            swal({
+              type: 'error',
+              text: 'Server error',
+            });
+          }
+        })
+        .catch((error) => {
+          if (error) {
+            swal({
+              type: 'error',
+              title: 'Oh no ...',
+              text: error.response.data.message,
+            });
+          } else {
+            swal({
+              type: 'error',
+              text: 'Cannot catch error',
+            });
+          }
+        });
+    },
+    updateUser(user, passwordComfirm) {
+      this.$http
+        .put('/profile', { userUpdate: user, password: passwordComfirm })
+        .then((res) => {
+          if (res) {
+            swal({
+              type: 'success',
+              title: 'Congrat !',
+              text: res.data.message,
+            });
           } else {
             swal({
               type: 'error',

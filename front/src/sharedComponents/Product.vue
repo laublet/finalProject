@@ -19,8 +19,6 @@
               <button @click="switcher" class="btn btn-lg btn--white">Delete</button>
               </div>
               <div v-else>
-                <h1>Comfirm password</h1>
-                <button @click="switcher" class="btn btn-lg btn--white">Not delete</button>
               <button @click="deleteProduct($route.params.id)" class="btn btn-lg btn--white">Comfirm</button>
               </div>
             </div>

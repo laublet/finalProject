@@ -18,40 +18,7 @@
 		padding: 1rem;
 		margin: .5rem;
   }
-  &__title {
-		font-size: 2rem;
-	font-weight: 700;
-	// Use inline-block to limit the background on the side
-	display: inline-block;
-	//Use the color = transpa
-	background-image: linear-gradient(
-		to right,
-		$color-tertiary-light,
-		$color-tertiary-dark
-	);
-	//Clip the background to the text
-	-webkit-background-clip: text;
-	//Render the color to transparent to see the background color
-	color: transparent;
-	letter-spacing: 0.2rem;
-  }
-  &__price {
-    font-size: 2rem;
-    font-weight: 700;
-    // Use inline-block to limit the background on the side
-    display: inline-block;
-    //Use the color = transpa
-    background-image: linear-gradient(
-      to right,
-      $color-secondary-light,
-      $color-secondary-dark
-    );
-    //Clip the background to the text
-    -webkit-background-clip: text;
-    //Render the color to transparent to see the background color
-    color: transparent;
-    letter-spacing: 0.2rem;
-  }
+
   &__description {
     font-size: 2rem;
     word-wrap: break-word;
@@ -65,7 +32,7 @@
 	}
 	img {
     margin: 1rem;
-    width: 15vw;
+    width: 20vw;
 		// max-height: 40vh;
 		// min-height: 10vh;
 		border-radius: 2rem;

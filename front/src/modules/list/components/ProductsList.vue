@@ -29,7 +29,7 @@ export default {
       title: 'Here is your AwesomeProductsList',
       products: [],
       pageNumber: 0,
-      size: 6,
+      size: 3,
       filter: '',
     };
   },
@@ -77,7 +77,6 @@ export default {
   },
   beforeMount() {
     this.getProducts();
-    console.log(this.$router.currentRoute);
   },
 };
 </script>

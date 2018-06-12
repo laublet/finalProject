@@ -81,11 +81,11 @@ const ProfileEdit = (resolve) => {
     'Profile',
   );
 };
-const ProfileDelete = (resolve) => {
+const ProfileComfirm = (resolve) => {
   require.ensure(
-    ['../modules/profile/components/ProfileDelete'],
+    ['../modules/profile/components/ProfileComfirm'],
     () => {
-      resolve(require('../modules/profile/components/ProfileDelete'));
+      resolve(require('../modules/profile/components/ProfileComfirm'));
     },
     'Profile',
   );
@@ -196,9 +196,14 @@ export default new Router({
           component: ProfileEdit,
         },
         {
-          path: '/delete',
+          path: '/profileUpdate',
+          name: 'profileUpdate',
+          component: ProfileComfirm,
+        },
+        {
+          path: '/profileDelete',
           name: 'profileDelete',
-          component: ProfileDelete,
+          component: ProfileComfirm,
         },
         {
           path: '/productsListUser',

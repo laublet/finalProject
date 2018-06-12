@@ -19,37 +19,59 @@ profile.get('/', (req, res) => {
 });
 
 profile.put('/', (req, res) => {
-  if (req.body.password) req.body.password = bcrypt.hashSync(req.body.password, 11);
-  req.body.lastUpdateDate = Date.now();
-  const updateOps = {};
-  for (const key of Object.keys(req.body)) {
-    if (req.body[key]) updateOps[key] = req.body[key];
-  }
-  User.findOneAndUpdate({ _id: req.decode.id }, { $set: updateOps }, { new: true }, (err, user) => {
+  console.log('ICI', req.body);
+  User.findOne({ _id: req.decode.id }, { password: 1 }, (err, user) => {
     if (err) res.status(500).json({ success: false, message: err.message });
-    else {
-      res.status(200).json({
-        success: true,
-        message: 'Profile updated !',
-        content: user,
+    else if (user.comparePasswords(req.body.password)) {
+      if (req.body.userUpdate.password) req.body.userUpdate.password = bcrypt.hashSync(req.body.userUpdate.password, 11);
+      req.body.userUpdate.lastUpdateDate = Date.now();
+      const updateOps = {};
+      for (const key of Object.keys(req.body.userUpdate)) {
+        if (req.body.userUpdate[key]) updateOps[key] = req.body.userUpdate[key];
+      }
+      User.findOneAndUpdate({ _id: req.decode.id }, { $set: updateOps }, { new: true }, (err, userUpdate) => {
+        console.log('LOL', userUpdate);
+        if (err) res.status(500).json({ success: false, message: err.message });
+        else {
+          res.status(200).json({
+            success: true,
+            message: 'Profile updated !',
+            content: userUpdate,
+          });
+        }
+      });
+    } else {
+      res.status(401).json({
+        success: false,
+        message: 'Wrong Password',
       });
     }
   });
 });
 
 profile.delete('/', (req, res) => {
-  Product.deleteMany({ userId: req.decode.id }, (err) => {
+  User.findOne({ _id: req.decode.id }, { password: 1 }, (err, user) => {
     if (err) res.status(500).json({ success: false, message: err.message });
-    else {
-      console.log('DONE');
-    }
-  });
-  User.findOneAndRemove({ _id: req.decode.id }, (err) => {
-    if (err) res.status(500).json({ success: false, message: err.message });
-    else {
-      res.status(200).json({
-        success: true,
-        message: 'You\'ve just been erased',
+    else if (user.comparePasswords(req.body.password)) {
+      Product.deleteMany({ userId: req.decode.id }, (err) => {
+        if (err) res.status(500).json({ success: false, message: err.message });
+        else {
+          console.log('DONE');
+        }
+      });
+      User.findOneAndRemove({ _id: req.decode.id }, (err) => {
+        if (err) res.status(500).json({ success: false, message: err.message });
+        else {
+          res.status(200).json({
+            success: true,
+            message: 'You\'ve just been erased',
+          });
+        }
+      });
+    } else {
+      res.status(401).json({
+        success: false,
+        message: 'Wrong Password',
       });
     }
   });

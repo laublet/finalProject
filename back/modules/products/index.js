@@ -42,6 +42,7 @@ products.post('/', upload.single('picture'), (req, res) => {
 });
 
 products.get('/', (req, res) => {
+  console.log('Here', req.decode);
   Product.find({}, (err, productList) => {
     if (err) res.status(500).json({ success: false, message: err.message });
     else {
@@ -91,7 +92,7 @@ products.put('/:id', (req, res) => {
 });
 
 products.delete('/:id', (req, res) => {
-  Product.findOneAndRemove({ _id: req.params.id }, (err, Produc) => {
+  Product.findOneAndRemove({ _id: req.params.id }, (err, Product) => {
     if (err) res.status(500).json({ success: false, message: err.message });
     else {
       res.status(200).json({

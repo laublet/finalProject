@@ -26,9 +26,32 @@
 		transition: transform 0.3s;
 		&:hover {
 			transform: translateY(-1.5rem) scale(1.03);
-		}
+    }
+    h2 {
+      font-size: 3rem;
+      font-weight: 700;
+      background-image: linear-gradient(
+        to right,
+        $color-primary-light,
+        $color-primary-dark
+      );
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: 0.2rem;
+    }
+    h3 {
+      font-size: 3rem;
+      font-weight: 700;
+      -webkit-background-clip: text;
+      color: $color-black;
+      letter-spacing: 0.2rem;
+    }
+      &__content {
+        font-size: 3rem;
+        word-wrap: break-word;
+        white-space: pre-wrap;
+      }
 	}
-
 	&__messageReaded {
 		background-color: $color-secondary-dark;
 	}

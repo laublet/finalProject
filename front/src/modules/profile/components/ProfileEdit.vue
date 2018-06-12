@@ -34,7 +34,7 @@
         <hr>
       </form>
     </div>
-    <button class="btn btn-lg btn--white" @click="check">Update your profile</button>
+    <router-link tag="button" class="btn btn-lg btn--white" :to="{name:'profileUpdate' , params: {userUpdate: this.user}}">Update your profile</router-link>
     <router-link tag="button" class="btn btn-lg btn--white" :to="{name:'profileDelete'}">Delete your profile</router-link>
   </div>
 </template>
@@ -56,19 +56,6 @@ export default {
     };
   },
   methods: {
-    check() {
-      if (!this.user.password && !this.comfirmPassword) {
-        this.updateUser();
-      } else if (this.user.password === this.comfirmPassword) {
-        this.updateUser();
-      } else {
-        swal({
-          type: 'error',
-          title: 'Oups',
-          text: 'You must enter the same password twice',
-        });
-      }
-    },
     getTheUser() {
       this.$http
         .get('/profile')
@@ -81,38 +68,6 @@ export default {
               type: 'error',
               title: 'Oh no ...',
               text: error.response.data.message,
-            });
-          }
-        });
-    },
-    updateUser() {
-      this.$http
-        .put('/profile', this.user)
-        .then((res) => {
-          if (res) {
-            swal({
-              type: 'success',
-              title: 'Congrat !',
-              text: res.data.message,
-            });
-          } else {
-            swal({
-              type: 'error',
-              text: 'Server error',
-            });
-          }
-        })
-        .catch((error) => {
-          if (error) {
-            swal({
-              type: 'error',
-              title: 'Oh no ...',
-              text: error.response.data.message,
-            });
-          } else {
-            swal({
-              type: 'error',
-              text: 'Cannot catch error',
             });
           }
         });

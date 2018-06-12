@@ -38,7 +38,7 @@ export default {
   name: 'sendMessages',
   data() {
     return {
-      title: 'Send your awesomeMessage !',
+      title: 'Send your message !',
       messagesToSend: {
         title: '',
         content: '',
@@ -49,12 +49,11 @@ export default {
   },
   methods: {
     sendMessage() {
-      console.log('ici', this.messagesToSend);
       this.$http
         .post('/messages', this.messagesToSend)
         .then((res) => {
           if (res) {
-            swal('Great !', 'Your message is gone ... but where ?', 'success');
+            swal('Great !', 'Your message has been send', 'success');
             (this.messagesToSend.title = ''), (this.messagesToSend.content = '');
           } else swal('You need to fill all the inputs');
         })

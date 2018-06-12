@@ -1,8 +1,8 @@
 <template>
   <div class="col-xs-12">
     <div class="messagesdetails">
-      <h2 class="heading-secondary">{{ this.message.title }}</h2>
-      <p>From: {{ this.message.from }}</p>
+      <p class="messagesdetails__from">From: {{ this.message.from }}</p><br>
+      <h2 class="messagesdetails__title">{{ this.message.title }}</h2>
       <div class="messagesdetails__content">{{ this.message.content }}</div>
       <button @click="contact(message.senderId, message.from)" class="btn btn-lg btn--white">Response</button>
     </div>
