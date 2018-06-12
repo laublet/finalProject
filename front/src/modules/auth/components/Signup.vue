@@ -3,7 +3,7 @@
     <form v-on:submit.prevent>
       <div class="row">
         <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-          <h1 class="heading-primary">{{ title }}</h1>
+          <h1 class="heading-secondary">{{ title }}</h1>
           <hr>
           <div class="form-group">
             <label for="username">Pseudo
@@ -45,7 +45,7 @@ export default {
   name: 'signup',
   data() {
     return {
-      title: 'Signup to OurAwesomeApp',
+      title: 'Signup',
       user: {
         email: '',
         username: '',

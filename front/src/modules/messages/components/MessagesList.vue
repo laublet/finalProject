@@ -9,9 +9,9 @@
           <p>{{ message.content }}</p>
         </router-link>
       </div>
-      <button :disabled="pageNumber === 0" @click="prevPage">Previous</button>
+      <button :disabled="pageNumber === 0" @click="prevPage" class="btn btn-lg btn--white">Previous</button>
       {{pageNumber + 1}} / {{pageCount}}
-      <button :disabled="pageNumber >= pageCount -1" @click="nextPage">Next</button>
+      <button :disabled="pageNumber >= pageCount" @click="nextPage" class="btn btn-lg btn--white">Next</button>
     </div>
   </div>
 </template>
@@ -55,8 +55,7 @@ export default {
       this.$http
         .get('/messages', {})
         .then((res) => {
-          this.messages = res.data.content;
-          this.messages.reverse();
+          this.messages = res.data.content.reverse();
         })
         .catch((error) => {
           if (error) {

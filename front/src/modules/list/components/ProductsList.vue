@@ -3,16 +3,18 @@
     <div class="productslist">
       <h2 class="heading-secondary">{{ title }}</h2>
       <div class="row productslist__row">
-        <input v-model='filter'>
-        <product style="cursor: pointer" v-for="product in paginatedProducts" :key="product._id" :namingProps="product"></product>
+        <input class="col-xs-6" v-model='filter' placeholder="Filter by title">
+        <div class="col-xs-12">
+        <product class="col-xs-12 col-md-4" style="cursor: pointer" v-for="product in paginatedProducts" :key="product._id" :namingProps="product"></product>
+        </div>
         <div v-if="this.productsFilter < 1">
           No product
         </div>
       </div>
     </div>
-    <button :disabled="pageNumber === 0" @click="prevPage">Previous</button>
+    <button :disabled="pageNumber === 0" @click="prevPage" class="btn btn-lg btn--white">Previous</button>
     {{pageNumber + 1}} / {{pageCount}}
-    <button :disabled="pageNumber >= pageCount -1" @click="nextPage">Next</button>
+    <button :disabled="pageNumber >= pageCount" @click="nextPage" class="btn btn-lg btn--white">Next</button>
   </div>
 </template>
 
@@ -27,7 +29,7 @@ export default {
       title: 'Here is your AwesomeProductsList',
       products: [],
       pageNumber: 0,
-      size: 1,
+      size: 6,
       filter: '',
     };
   },
@@ -45,7 +47,7 @@ export default {
       this.$http
         .get('/products', {})
         .then((res) => {
-          this.products = res.data.content;
+          this.products = res.data.content.reverse();
         })
         .catch((error) => {
           if (error) {
@@ -75,6 +77,7 @@ export default {
   },
   beforeMount() {
     this.getProducts();
+    console.log(this.$router.currentRoute);
   },
 };
 </script>

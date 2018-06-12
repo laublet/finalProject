@@ -2,13 +2,13 @@
   <div class="productsListUser" >
     <h2 class="heading-secondary">{{ title }}</h2>
     <div class="row productsListUser__row">
-      <ProductUser style="cursor: pointer" v-for="product in products" :key="product._id"   :namingProps="product"></ProductUser>
+      <Product style="cursor: pointer" v-for="product in products" :key="product._id" :namingProps="product"></Product>
     </div>
   </div>
 </template>
 
 <script>
-import ProductUser from '@/sharedComponents/ProductUser';
+import Product from '@/sharedComponents/Product';
 import swal from 'sweetalert2';
 
 export default {
@@ -20,7 +20,7 @@ export default {
     };
   },
   components: {
-    ProductUser,
+    Product,
   },
   methods: {
     getProducts() {
