@@ -16,8 +16,8 @@
       </div>
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-          <router-link tag="li" :to="{name: 'newProduct'}"><a>Enregistrer un produit</a></router-link>
-          <router-link tag="li" :to="{name: 'productsList'}"><a>Liste des Produits</a></router-link>
+          <router-link tag="li" :to="{name: 'newProduct'}"><a>Register a product</a></router-link>
+          <router-link tag="li" :to="{name: 'productsList'}"><a>List of products</a></router-link>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <router-link tag="li" :to="{name: 'messagesList'}"><a>Your Inbox</a></router-link>

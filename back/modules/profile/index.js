@@ -19,7 +19,6 @@ profile.get('/', (req, res) => {
 });
 
 profile.put('/', (req, res) => {
-  console.log('ICI', req.body);
   User.findOne({ _id: req.decode.id }, { password: 1 }, (err, user) => {
     if (err) res.status(500).json({ success: false, message: err.message });
     else if (user.comparePasswords(req.body.password)) {
@@ -30,7 +29,6 @@ profile.put('/', (req, res) => {
         if (req.body.userUpdate[key]) updateOps[key] = req.body.userUpdate[key];
       }
       User.findOneAndUpdate({ _id: req.decode.id }, { $set: updateOps }, { new: true }, (err, userUpdate) => {
-        console.log('LOL', userUpdate);
         if (err) res.status(500).json({ success: false, message: err.message });
         else {
           res.status(200).json({

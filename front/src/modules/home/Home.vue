@@ -58,6 +58,7 @@ export default {
             const locations = this.productsLocation;
             for (let i = 0; i < locations.length; i++) {
               if (locations[i][1] == null || locations[i][2] == null) {
+                console.log(this.locations.title[i]);
               } else {
                 const markerLocation = new L.marker([locations[i][1], locations[i][2]]).addTo(
                   mymap,
