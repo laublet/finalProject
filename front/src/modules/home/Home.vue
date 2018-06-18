@@ -27,6 +27,7 @@ export default {
     Product,
   },
   methods: {
+    // vuex to implement next
     getProducts() {
       this.$http
         .get('/products', {})
@@ -48,6 +49,7 @@ export default {
         });
     },
     mapinit() {
+      // Need to try async/await here
       const currentLocation = () => {
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition((position) => {
